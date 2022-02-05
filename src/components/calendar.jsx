@@ -7,10 +7,19 @@ const Calendar = () => {
       
     }
 
+    const containerStyles = {
+        display: 'flex',
+        flexDirection: 'row',
+    }
+
     return (
-        <div style={styles}>
+        <div className='calendar' style={styles}>
             <WeekDays/>
-            <Day/>
+            <div className='container' style={containerStyles}>
+                <button>Previous</button>
+                <Day/>
+                <button>Next</button>
+            </div>
         </div>
         
     )
