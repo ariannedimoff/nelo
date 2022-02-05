@@ -1,6 +1,7 @@
 import React from 'react';
 
-const Date = (props) => {
+const Days = (props) => {
+
     const styles = {
         display:'grid', 
         gridTemplateColumns: '150px 150px 150px 150px 150px 150px 150px',
@@ -27,4 +28,4 @@ const Date = (props) => {
     );
 };
 
-export default Date;
+export default Days;
