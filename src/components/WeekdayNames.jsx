@@ -11,7 +11,7 @@ const WeekdayNames = () => {
         justifyContent: 'space-between',
         alignSelf: 'center',
         margin: 'auto',
-        width: '1050px',
+        width: '70vw',
         textAlign: 'center',
     };
     

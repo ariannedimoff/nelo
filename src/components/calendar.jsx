@@ -1,12 +1,19 @@
 import React, { useState } from "react";
 import moment from "moment";
 import CalendarHeader from "./CalendarHeader";
+import WeekdayNames from "./WeekdayNames";
 import Weeks from "./Weeks";
 
 const Calendar = () => {
+  const calendarStyles = {
+    display: 'flex',
+    flexDirection: 'column',
+  };
+
   const containerStyles = {
-    display: "flex",
-    flexDirection: "row",
+    display: 'flex',
+    margin: 'auto',
+    alignSelf: 'center',
   };
 
   const now = () => {
@@ -32,24 +39,30 @@ const Calendar = () => {
   };
 
   return (
-    <div className="calendar">
-      <CalendarHeader date={date} resetDate={resetDate} />
+    <div className="calendar" style={calendarStyles}>
+      <CalendarHeader date={date}/>
       <div className="container" style={containerStyles}>
-        <button
-          onClick={() => {
-            changeDate(-1);
-          }}
+        <div className='button-wrapper' style={{width: 'auto'}}>
+          <button
+            onClick={() => {
+              changeDate(-1);
+            }}
+          >Previous</button>
+        </div>
+        <div
+          className="calendar-wrapper"
+          style={{padding: '0 8vw 0 8vw'}}
         >
-          Previous
-        </button>
-        <Weeks date={date}></Weeks>
-        <button
-          onClick={() => {
-            changeDate(1);
-          }}
-        >
-          Next
-        </button>
+          <WeekdayNames />
+          <Weeks date={date} />
+        </div>
+        <div className='button-wrapper'>
+          <button
+            onClick={() => {
+              changeDate(-1);
+            }}
+          >Next</button>
+        </div>
       </div>
     </div>
   );

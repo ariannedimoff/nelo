@@ -20,7 +20,7 @@ time, mark, audio, video {
 	padding: 0;
 	border: 0;
 	font-size: 100%;
-	font: inherit;
+	font-family: Arial, Helvetica, sans-serif;
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
@@ -28,11 +28,21 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+
+* {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
 body {
 	line-height: 1;
 }
 ol, ul {
 	list-style: none;
+}
+
+h3 {
+	font-size: 1.2em;
+	margin: 1em 0 1em 0;
 }
 
 #enabled-true {
@@ -42,4 +52,3 @@ ol, ul {
 #enabled-false {
 	background-color: rgb(128, 128, 128)
 }
-

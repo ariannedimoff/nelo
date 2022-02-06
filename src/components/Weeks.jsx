@@ -1,6 +1,5 @@
 import React from "react";
 import moment from "moment";
-import WeekdayNames from "./WeekdayNames";
 import Day from "./Day";
 
 const Weeks = (props) => {
@@ -8,8 +7,8 @@ const Weeks = (props) => {
 
   const styles = {
     display: "grid",
-    gridTemplateColumns: "150px 150px 150px 150px 150px 150px 150px",
-    width: "fit-content",
+    gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr 1fr 1fr",
+    width: "70vw",
     margin: "auto",
     alignSelf: "center",
   };
@@ -38,7 +37,6 @@ const Weeks = (props) => {
 
   return (
     <div>
-      <WeekdayNames />
       <div className="weeks" style={styles}>
         {daysInPreviousMonth().map((day, i) => (
           <Day key={i} date={day} enabled={false} />
