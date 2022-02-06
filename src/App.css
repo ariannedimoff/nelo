@@ -35,3 +35,11 @@ ol, ul {
 	list-style: none;
 }
 
+#enabled-true {
+	background-color: rgb(210, 210, 210)
+}
+
+#enabled-false {
+	background-color: rgb(128, 128, 128)
+}
+

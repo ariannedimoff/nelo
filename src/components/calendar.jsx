@@ -1,30 +1,55 @@
-import React from "react";
-import WeekDays from "./weekDays";
-import Days from "./days";
+import React, { useState } from "react";
+import moment from "moment";
+import CalendarHeader from "./CalendarHeader";
+import Weeks from "./Weeks";
 
-const Calendar = (props) => {
-  const styles = {};
-
+const Calendar = () => {
   const containerStyles = {
     display: "flex",
     flexDirection: "row",
   };
 
-  const { date, setDate, formatDate } = props;
+  const now = () => {
+    return formatDate(moment());
+  };
 
-  const changeDate = (date, n) => {
-    let newDate = new Date(date);
-    newDate = formatDate(new Date(newDate.setMonth(newDate.getMonth()+n)))
-    setDate(newDate)
+  const formatDate = (date) => {
+    date = moment(date);
+    const month = date.format("MMMM");
+    const year = date.year();
+    return `${month} ${year}`;
+  };
+
+  const resetDate = () => {
+    setDate(now());
+  };
+
+  const [date, setDate] = useState(now());
+
+  const changeDate = (n) => {
+    const newDate = formatDate(moment(date).add(n, "M"));
+    setDate(newDate);
   };
 
   return (
-    <div className="calendar" style={styles}>
-      <WeekDays />
+    <div className="calendar">
+      <CalendarHeader date={date} resetDate={resetDate} />
       <div className="container" style={containerStyles}>
-        <button onClick={() => {changeDate(date, -1)}}>Previous</button>
-        <Days />
-        <button onClick={() => {changeDate(date, 1)}}>Next</button>
+        <button
+          onClick={() => {
+            changeDate(-1);
+          }}
+        >
+          Previous
+        </button>
+        <Weeks date={date}></Weeks>
+        <button
+          onClick={() => {
+            changeDate(1);
+          }}
+        >
+          Next
+        </button>
       </div>
     </div>
   );
