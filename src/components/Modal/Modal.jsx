@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./modal.css";
-import { TextField } from "@mui/material";
 
 const Modal = ({ visible, toggle, data }) => {
   const {
@@ -17,7 +16,7 @@ const Modal = ({ visible, toggle, data }) => {
               <h3>{label}</h3>
             </div>
             <div className="modal-content">
-              
+
             </div>
           </div>
           <div className="modal-background" onClick={toggle}></div>
