@@ -1,13 +1,12 @@
 import React from "react";
 
-const CalendarHeader = (props) => {
+const CalendarHeader = ({ date, resetDate }) => {
   const styles = {
     textAlign: "center",
     fontWeight: "bold",
+    marginBottom: '0.5rem'
   };
 
-  const { date, resetDate } = props;
-  console.log("date", date)
 
   return (
     <div className="calendar-header" style={styles}>

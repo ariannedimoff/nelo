@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import moment from "moment";
+import { formatDate, now } from '../helpers/CalendarHelpers';
 import CalendarHeader from "./CalendarHeader";
 import WeekdayNames from "./WeekdayNames";
-import Weeks from "./Weeks";
+import Month from "./Month";
 
 const Calendar = () => {
   const calendarStyles = {
@@ -16,31 +17,22 @@ const Calendar = () => {
     alignSelf: 'center',
   };
 
-  const now = () => {
-    return formatDate(moment());
-  };
-
-  const formatDate = (date) => {
-    date = moment(date);
-    const month = date.format("MMMM");
-    const year = date.year();
-    return `${month} ${year}`;
-  };
-
-  const resetDate = () => {
-    setDate(now());
-  };
-
   const [date, setDate] = useState(now());
+  const [events, setEvents] = useState({});
 
   const changeDate = (n) => {
     const newDate = formatDate(moment(date).add(n, "M"));
     setDate(newDate);
   };
 
+  const resetDate = () => {
+    setDate(now());
+  };
+
+
   return (
     <div className="calendar" style={calendarStyles}>
-      <CalendarHeader date={date}/>
+      <CalendarHeader date={date} resetDate={resetDate}/>
       <div className="container" style={containerStyles}>
         <div className='button-wrapper' style={{width: 'auto'}}>
           <button
@@ -54,12 +46,12 @@ const Calendar = () => {
           style={{padding: '0 8vw 0 8vw'}}
         >
           <WeekdayNames />
-          <Weeks date={date} />
+          <Month date={date} events={events} setEvents={setEvents}/>
         </div>
         <div className='button-wrapper'>
           <button
             onClick={() => {
-              changeDate(-1);
+              changeDate(1);
             }}
           >Next</button>
         </div>
