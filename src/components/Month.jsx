@@ -7,7 +7,7 @@ import {
 } from "../helpers/CalendarHelpers";
 
 const Month = (props) => {
-  const { date, day, events, setEvents } = props;
+  const { date, events, setEvents } = props;
 
   const styles = {
     display: "grid",
@@ -25,7 +25,7 @@ const Month = (props) => {
             key={i}
             fullDate={`${day} ${date}`}
             day={day}
-            events={events}
+            events={null}
             setEvents={setEvents}
             enabled={false}
           />
@@ -45,7 +45,7 @@ const Month = (props) => {
             key={i}
             fullDate={`${day} ${date}`}
             day={day}
-            events={events}
+            events={null}
             setEvents={setEvents}
             enabled={false}
           />

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { Button, Dialog, TextField } from "@mui/material";
+import { Button, Dialog, TextField, Tooltip } from "@mui/material";
 import { Box } from "@mui/system";
-import Event from './Event';
 
 const DayCard = (props) => {
   const cardStyles = {
@@ -21,11 +20,16 @@ const DayCard = (props) => {
   };
 
   const getEvents = () => {
-    return events[fullDate] ? events[fullDate] : null;
-  }
+    return events && events[fullDate] ? events[fullDate] : null;
+  };
 
-  const handleSubmit = () => {
-    const newEvent = { title: title, description: description };
+  const handleClick = () => {
+    if (title.length && description.length) {
+      handleSubmit({ title: title, description: description });
+    }
+  };
+
+  const handleSubmit = (newEvent) => {
     const dailyEvents = events[fullDate] || [];
     dailyEvents.push(newEvent);
     events[fullDate] = dailyEvents;
@@ -43,7 +47,11 @@ const DayCard = (props) => {
       >
         {day}
         {getEvents()?.map((events, i) => (
-          <ul style={{textAlign: 'left'}}key={i}>{events.title}</ul>
+          <Tooltip title={events.title} placement="top">
+            <ul className="event" style={{ textAlign: "left" }} key={i}>
+              {events.title}
+            </ul>
+          </Tooltip>
         ))}
       </div>
       <Dialog
@@ -88,7 +96,7 @@ const DayCard = (props) => {
           <Button
             variant="contained"
             fullWidth
-            onClick={handleSubmit}
+            onClick={handleClick}
             style={{ marginTop: "15px" }}
           >
             SAVE
