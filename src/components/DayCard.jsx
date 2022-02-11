@@ -1,8 +1,16 @@
 import React, { useState } from "react";
+
 import { Button, Dialog, TextField, Tooltip } from "@mui/material";
-import { Box } from "@mui/system";
+
+import NewEventForm from './NewEventForm';
+
 
 const DayCard = (props) => {
+  const { enabled, day, fullDate, events, setEvents } = props;
+  
+  const [open, setOpen] = useState(false);
+ 
+
   const cardStyles = {
     height: "150px",
     border: "1px solid black",
@@ -10,23 +18,15 @@ const DayCard = (props) => {
     textAlign: "right",
   };
 
-  const { enabled, day, fullDate, events, setEvents } = props;
-  const [open, setOpen] = useState(false);
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
+  const modalStyles = { height: "100%", padding: "10px" }
 
-  const openModal = (enabled) => {
+
+  const openModal = () => {
     if (enabled) setOpen(true);
   };
 
   const getEvents = () => {
     return events && events[fullDate] ? events[fullDate] : null;
-  };
-
-  const handleClick = () => {
-    if (title.length && description.length) {
-      handleSubmit({ title: title, description: description });
-    }
   };
 
   const handleSubmit = (newEvent) => {
@@ -38,17 +38,14 @@ const DayCard = (props) => {
   };
 
   return (
-    <div className="card" id={`enabled-${enabled}`} style={cardStyles}>
+    <div className="card" id={`enabled-${enabled}`} style={cardStyles} onDoubleClick={() => openModal()}>
       <div
-        onDoubleClick={() => {
-          openModal(enabled);
-        }}
         style={{ height: "100%", padding: "10px" }}
       >
         {day}
         {getEvents()?.map((events, i) => (
-          <Tooltip title={events.title} placement="top">
-            <ul className="event" style={{ textAlign: "left" }} key={i}>
+          <Tooltip key={i} title={events.description} placement="top">
+            <ul className="event" style={{ textAlign: "left" }}>
               {events.title}
             </ul>
           </Tooltip>
@@ -68,40 +65,7 @@ const DayCard = (props) => {
         open={open}
         onClose={() => setOpen(false)}
       >
-        <Box
-          p={2}
-          style={{
-            border: "2px solid #3874cb",
-            margin: "1px",
-            borderRadius: "8px",
-          }}
-        >
-          <h5 style={{ fontWeight: "bold" }}>New Event</h5>
-          <TextField
-            label="Title"
-            fullWidth
-            required
-            style={{ marginTop: "15px" }}
-            onChange={(e) => {
-              setTitle(e.target.value);
-            }}
-          ></TextField>
-          <TextField
-            label="Description"
-            fullWidth
-            required
-            style={{ marginTop: "15px" }}
-            onChange={(e) => setDescription(e.target.value)}
-          ></TextField>
-          <Button
-            variant="contained"
-            fullWidth
-            onClick={handleClick}
-            style={{ marginTop: "15px" }}
-          >
-            SAVE
-          </Button>
-        </Box>
+        <NewEventForm handleSubmit={handleSubmit} />
       </Dialog>
     </div>
   );

@@ -6,6 +6,9 @@ import WeekdayNames from "./WeekdayNames";
 import Month from "./Month";
 
 const Calendar = () => {
+  const [date, setDate] = useState(now());
+  const [events, setEvents] = useState({});
+  
   const calendarStyles = {
     display: "flex",
     flexDirection: "column",
@@ -16,9 +19,6 @@ const Calendar = () => {
     margin: "auto",
     alignSelf: "center",
   };
-
-  const [date, setDate] = useState(now());
-  const [events, setEvents] = useState({});
 
   const changeDate = (n) => {
     const newDate = formatDate(moment(date).add(n, "M"));
