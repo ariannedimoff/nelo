@@ -11,10 +11,8 @@ const Month = (props) => {
 
   const styles = {
     display: "grid",
-    gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr 1fr 1fr",
-    width: "70vw",
-    margin: "auto",
-    alignSelf: "center",
+    gridTemplateColumns: "repeat(7, 1fr)",
+    width: "66vw",
   };
 
   return (

@@ -8,16 +8,11 @@ import Month from "./Month";
 const Calendar = () => {
   const [date, setDate] = useState(now());
   const [events, setEvents] = useState({});
-  
+
   const calendarStyles = {
     display: "flex",
-    flexDirection: "column",
-  };
-
-  const containerStyles = {
-    display: "flex",
-    margin: "auto",
-    alignSelf: "center",
+    justifyContent: "space-around",
+    alignItems: "flex-start",
   };
 
   const changeDate = (n) => {
@@ -30,31 +25,27 @@ const Calendar = () => {
   };
 
   return (
-    <div className="calendar" style={calendarStyles}>
+    <div className="calendar-wrapper">
       <CalendarHeader date={date} resetDate={resetDate} />
-      <div className="container" style={containerStyles}>
-        <div className="button-wrapper" style={{ width: "auto" }}>
-          <button
-            onClick={() => {
-              changeDate(-1);
-            }}
-          >
-            Previous
-          </button>
-        </div>
-        <div className="calendar-wrapper" style={{ padding: "0 8vw 0 8vw" }}>
+      <div className="calendar" style={calendarStyles}>
+        <button
+          onClick={() => {
+            changeDate(-1);
+          }}
+        >
+          Previous
+        </button>
+        <div className="container">
           <WeekdayNames />
           <Month date={date} events={events} setEvents={setEvents} />
         </div>
-        <div className="button-wrapper">
-          <button
-            onClick={() => {
-              changeDate(1);
-            }}
-          >
-            Next
-          </button>
-        </div>
+        <button
+          onClick={() => {
+            changeDate(1);
+          }}
+        >
+          Next
+        </button>
       </div>
     </div>
   );

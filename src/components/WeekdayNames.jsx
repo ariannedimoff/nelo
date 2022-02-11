@@ -8,26 +8,15 @@ const WeekdayNames = () => {
     display: "flex",
     flexDirection: "row",
     fontWeight: "bold",
-    justifyContent: "space-between",
-    alignSelf: "center",
-    margin: "auto",
-    width: "70vw",
-    textAlign: "center",
+    justifyContent: "space-around",
+    width: "66vw",
+    margin: "21px 0px 21px 0px",
   };
 
   return (
     <div style={styles}>
       {weekDays.map((day, i) => (
-        <ul
-          key={i}
-          style={{
-            margin: "15px 0px 15px 0px",
-            width: "150px",
-            textAlign: "center",
-          }}
-        >
-          {day}
-        </ul>
+        <ul key={i}>{day}</ul>
       ))}
     </div>
   );

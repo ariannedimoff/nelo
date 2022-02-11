@@ -2,9 +2,10 @@ import React from "react";
 
 const CalendarHeader = ({ date, resetDate }) => {
   const styles = {
-    textAlign: "center",
-    fontWeight: "bold",
-    marginBottom: "0.5rem",
+    display: "flex",
+    width: "100%",
+    flexDirection: "column",
+    alignItems: "center",
   };
 
   return (

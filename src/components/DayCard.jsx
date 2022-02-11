@@ -1,25 +1,21 @@
 import React, { useState } from "react";
 
-import { Button, Dialog, TextField, Tooltip } from "@mui/material";
+import { Dialog, Tooltip } from "@mui/material";
 
-import NewEventForm from './NewEventForm';
-
+import NewEventForm from "./NewEventForm";
 
 const DayCard = (props) => {
   const { enabled, day, fullDate, events, setEvents } = props;
-  
+
   const [open, setOpen] = useState(false);
- 
 
   const cardStyles = {
     height: "150px",
+    width: "150px",
     border: "1px solid black",
-    margin: "0",
+    padding: "8px",
     textAlign: "right",
   };
-
-  const modalStyles = { height: "100%", padding: "10px" }
-
 
   const openModal = () => {
     if (enabled) setOpen(true);
@@ -38,10 +34,13 @@ const DayCard = (props) => {
   };
 
   return (
-    <div className="card" id={`enabled-${enabled}`} style={cardStyles} onDoubleClick={() => openModal()}>
-      <div
-        style={{ height: "100%", padding: "10px" }}
-      >
+    <div
+      className="card"
+      id={`enabled-${enabled}`}
+      style={cardStyles}
+      onDoubleClick={() => openModal()}
+    >
+      <div>
         {day}
         {getEvents()?.map((events, i) => (
           <Tooltip key={i} title={events.description} placement="top">
@@ -55,10 +54,10 @@ const DayCard = (props) => {
         PaperProps={{
           sx: {
             position: "fixed",
-            top: 160,
+            top: 170,
             m: 0,
             borderRadius: "8px",
-            width: "50%",
+            width: "52%",
           },
         }}
         maxWidth="true"

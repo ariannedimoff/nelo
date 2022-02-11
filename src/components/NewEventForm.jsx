@@ -1,33 +1,30 @@
 import React, { useState } from "react";
-
 import { Box } from "@mui/system";
 import { Button, TextField } from "@mui/material";
 
-
 const NewEventForm = (props) => {
+  const { handleSubmit } = props;
 
-    const { handleSubmit } = props;
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
 
-    const [title, setTitle] = useState("");
-    const [description, setDescription] = useState("");
-
-    const handleClick = () => {
-        if (title.length && description.length) {
-          handleSubmit({ title: title, description: description });
-        }
-      };
-
+  const handleClick = () => {
+    if (title.length && description.length) {
+      handleSubmit({ title: title, description: description });
+    }
+  };
 
   return (
     <Box
       p={2}
       style={{
-        border: "2px solid #3874cb",
-        margin: "1px",
         borderRadius: "8px",
+        padding: "18px",
       }}
     >
-      <h5 style={{ fontWeight: "bold" }}>New Event</h5>
+      <h5 style={{ fontSize: "0.83em", fontWeight: "bold", margin: "22px 0" }}>
+        New Event
+      </h5>
       <TextField
         label="Title"
         fullWidth
