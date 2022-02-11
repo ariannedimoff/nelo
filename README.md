@@ -1,6 +1,6 @@
 # Nelo Take-home Project - by Arianne Dimoff
 
-### To view the project:
+### To view the project
 - Clone the repository
 - Run `npm install`
 - Run `npm start`
