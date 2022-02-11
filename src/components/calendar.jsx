@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import moment from "moment";
-import { formatDate, now } from "../helpers/CalendarHelpers";
 import CalendarHeader from "./CalendarHeader";
 import WeekdayNames from "./WeekdayNames";
 import Month from "./Month";
+import { formatDate, now } from "../helpers/CalendarHelpers";
 
 const Calendar = () => {
   const [date, setDate] = useState(now());

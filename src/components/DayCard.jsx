@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-
 import { Dialog, Tooltip } from "@mui/material";
-
 import NewEventForm from "./NewEventForm";
 
 const DayCard = (props) => {
